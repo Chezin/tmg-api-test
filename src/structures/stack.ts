@@ -1,24 +1,24 @@
-class Stack<T> {
-	private stack: T[];
+class Stack {
+	private stack: string[];
 
 	constructor() {
 		this.stack = [];
 	}
 
-	push(element: T): void {
+	push(element: string): void {
 		this.stack.push(element);
 	}
 
-	pop(): T | undefined {
+	pop(): string | undefined {
 		if (this.isEmpty()) {
-			throw new Error('Stack is empty');
+			throw new Error("Stack is empty");
 		}
 		return this.stack.pop();
 	}
 
-	peek(): T | undefined {
+	peek(): string | undefined {
 		if (this.isEmpty()) {
-			throw new Error('Stack is empty');
+			throw new Error("Stack is empty");
 		}
 		return this.stack[this.stack.length - 1];
 	}
