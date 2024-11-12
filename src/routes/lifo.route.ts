@@ -10,7 +10,6 @@ lifoRouter.post('/add', (request: Request, response: Response) => {
 		response.status(400).json({ error: 'Element is required' });
 	}
 	stack.push(element);
-
 	response.send();
 });
 
