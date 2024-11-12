@@ -1,12 +1,12 @@
 import express, { Request, Response } from 'express';
+import lifoRouter from './routes/lifo.route.js';
 
 const app = express();
 
 const PORT = 3000;
 
-app.get('/', (request: Request, response: Response) => {
-	response.status(200).send('Hello World');
-});
+app.use(express.json());
+app.use('/lifo', lifoRouter);
 
 app
 	.listen(PORT, () => {
