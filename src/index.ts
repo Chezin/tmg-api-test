@@ -1,5 +1,5 @@
 import express from 'express';
-import lifoRouter from './routes/lifo.route.js';
+import stackRouter from './routes/stack.route.js';
 import keyValueRouter from './routes/keyvalue.route.js';
 
 const app = express();
@@ -7,7 +7,7 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
-app.use('/lifo', lifoRouter);
+app.use('/stack', stackRouter);
 app.use('/keyvalue', keyValueRouter);
 app
 	.listen(PORT, () => {
