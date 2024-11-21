@@ -112,7 +112,7 @@ The class public methods goes as follows:
 
 ### `GET /stack/`
 
-- **Description**: Retrieves the top item from the stack without removing it.
+- **Description**: Retrieves the top item from the stack and removes it.
 - **Responses**:
   - **200 OK**: Returns the top item of the stack.
   - **404 Not Found**: If the stack is empty.
