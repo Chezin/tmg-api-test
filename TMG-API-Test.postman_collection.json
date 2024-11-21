@@ -1,0 +1,133 @@
+{
+	"info": {
+		"_postman_id": "0bc47485-0874-4a0a-afd4-531e80fcffac",
+		"name": "TMG-API-Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4371233"
+	},
+	"item": [
+		{
+			"name": "keyvalue",
+			"item": [
+				{
+					"name": "Add key value",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"key\": \"name\",\n    \"value\": \"John Doe\",\n    \"ttl\": 10000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/keyvalue/add",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"keyvalue",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get value from key",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/keyvalue/name",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"keyvalue",
+								"name"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete value from key",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/keyvalue/name",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"keyvalue",
+								"name"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "stack",
+			"item": [
+				{
+					"name": "Add item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"item\": \"Hello\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/stack/add",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"stack",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get item/pop stack",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/stack/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"stack",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -29,6 +29,8 @@ The class public methods goes as follows:
 
 # API Documentation
 
+There is a Postman collection inside the project root for easier testing.
+
 ## KeyValue API
 
 ### `POST /keyvalue/add`
