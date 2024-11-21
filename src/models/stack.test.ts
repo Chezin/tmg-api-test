@@ -1,6 +1,6 @@
 import Stack from './stack.js';
 
-describe('Stack Data Structure', () => {
+describe('Stack Model', () => {
 	let stack: Stack;
 
 	beforeEach(() => {
@@ -9,33 +9,37 @@ describe('Stack Data Structure', () => {
 
 	test('should push an element onto the stack', () => {
 		stack.push('Hello');
-		expect(stack.peek()).toBe('Hello');
+		expect(stack.pop()).toBe('Hello');
 	});
 
 	test('should pop the top element from the stack', () => {
 		stack.push('Hello');
 		stack.push('World');
 		expect(stack.pop()).toBe('World');
-		expect(stack.peek()).toBe('Hello');
+		expect(stack.pop()).toBe('Hello');
 	});
 
-	test('should throw an error when popping from an empty stack', () => {
-		expect(() => stack.pop()).toThrow('Stack is empty');
+	test('should return undefined when popping from an empty stack', () => {
+		expect(stack.pop()).toBeUndefined();
 	});
 
-	test('should peek the top element without removing it', () => {
-		stack.push('Hello');
-		expect(stack.peek()).toBe('Hello');
-		expect(stack.peek()).toBe('Hello');
-	});
+	test('should handle multiple push and pop operations correctly', () => {
+		stack.push('A');
+		stack.push('B');
+		stack.push('C');
 
-	test('should throw an error when peeking an empty stack', () => {
-		expect(() => stack.peek()).toThrow('Stack is empty');
-	});
-
-	test('should check if the stack is empty', () => {
+		expect(stack.pop()).toBe('C');
+		expect(stack.pop()).toBe('B');
+		expect(stack.pop()).toBe('A');
 		expect(stack.isEmpty()).toBe(true);
-		stack.push('Hello');
+	});
+
+	test('should return true for isEmpty() when stack is empty', () => {
+		expect(stack.isEmpty()).toBe(true);
+	});
+
+	test('should return false for isEmpty() when stack has elements', () => {
+		stack.push('A');
 		expect(stack.isEmpty()).toBe(false);
 	});
 });

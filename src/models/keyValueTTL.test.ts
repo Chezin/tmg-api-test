@@ -1,6 +1,6 @@
 import KeyValueTTL from './keyValueTTL.js';
 
-describe('KeyValueStore Data Structure', () => {
+describe('KeyValue Model', () => {
 	let keyValueTTL: KeyValueTTL;
 
 	beforeEach(() => {
@@ -40,11 +40,29 @@ describe('KeyValueStore Data Structure', () => {
 		}, 1000);
 	});
 
-	test('should remove key after TTL expires', (done) => {
+	test('should remove value after TTL expires', (done) => {
 		keyValueTTL.set('session', 'active', 500);
 		setTimeout(() => {
 			expect(keyValueTTL.get('session')).toBeNull();
 			done();
 		}, 600);
+	});
+
+	test('should handle multiple keys with different TTLs', (done) => {
+		keyValueTTL.set('key1', 'value1', 500);
+		keyValueTTL.set('key2', 'value2', 1000);
+		keyValueTTL.set('key3', 'value3', 2000);
+
+		setTimeout(() => {
+			expect(keyValueTTL.get('key1')).toBeNull();
+			expect(keyValueTTL.get('key2')).toBe('value2');
+			expect(keyValueTTL.get('key3')).toBe('value3');
+		}, 750);
+
+		setTimeout(() => {
+			expect(keyValueTTL.get('key2')).toBeNull();
+			expect(keyValueTTL.get('key3')).toBe('value3');
+			done();
+		}, 1500);
 	});
 });
