@@ -1,9 +1,9 @@
 import express from 'express';
-import { pushToStack, peekStack } from '../controllers/stack.controller.js';
+import { pushToStack, popStack } from '../controllers/stack.controller.js';
 
 const stackRouter = express.Router();
 
 stackRouter.post('/add', pushToStack);
-stackRouter.get('/', peekStack);
+stackRouter.get('/', popStack);
 
 export default stackRouter;
