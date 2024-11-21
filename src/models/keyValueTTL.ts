@@ -6,6 +6,10 @@ class KeyValueTTL {
 	/**
 	 * Adds a key-value pair to the store with an optional TTL (in milliseconds).
 	 * If TTL is provided, the key's value will expire after the specified time.
+	 *
+	 * @param key key to be added
+	 * @param value value of the key
+	 * @param ttl value expiration time in milliseconds
 	 */
 	set(key: string, value: string, ttl?: number): void {
 		this.cleanupExpiredKeys();
@@ -22,6 +26,9 @@ class KeyValueTTL {
 	/**
 	 * Retrieves the value for a given key.
 	 * If the key exists but its value has expired, returns `null`.
+	 *
+	 * @param key to retrieve the value
+	 * @returns the value of the key or null if entry doesnt exist
 	 */
 	get(key: string): string | null {
 		this.cleanupExpiredKeys();
@@ -33,8 +40,10 @@ class KeyValueTTL {
 	}
 
 	/**
-	 * Deletes a key-value pair from the store.
+	 * Sets a value from the object to null.
 	 * Throws an error if the key does not exist.
+	 *
+	 * @param key to have its value removed
 	 */
 	delete(key: string): void {
 		if (!this.keyValue.has(key)) {
@@ -45,7 +54,10 @@ class KeyValueTTL {
 	}
 
 	/**
-	 * Checks if a key exists in the store (ignores expired values).
+	 * Checks if a key exists in the object.
+	 *
+	 * @param key
+	 * @returns if the key exists
 	 */
 	has(key: string): boolean {
 		this.cleanupExpiredKeys();
@@ -74,6 +86,7 @@ class KeyValueTTL {
 
 	/**
 	 * Removes a key from the expiration queue.
+	 * Used in delete() since we're manually removing an item.
 	 */
 	private removeFromExpirationQueue(key: string): void {
 		const index = this.expirationQueue.findIndex((item) => item.key === key);

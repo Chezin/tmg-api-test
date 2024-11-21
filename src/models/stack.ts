@@ -5,22 +5,20 @@ class Stack {
 		this.stack = [];
 	}
 
+	/**
+	 * Adds element to the top of the stack
+	 * @param element string that will be added to the stack
+	 */
 	push(element: string): void {
 		this.stack.push(element);
 	}
 
+	/**
+	 * Removes and returns the element on top of the stack
+	 * @returns element on top of the stack
+	 */
 	pop(): string | undefined {
-		if (this.stack.length === 0) {
-			throw new Error('Stack is empty');
-		}
 		return this.stack.pop();
-	}
-
-	peek(): string | undefined {
-		if (this.isEmpty()) {
-			throw new Error('Stack is empty');
-		}
-		return this.stack[this.stack.length - 1];
 	}
 
 	isEmpty(): boolean {
